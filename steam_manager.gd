@@ -12,7 +12,7 @@ var is_online: bool = false
 var lobby_id: int = 0
 var lobby_members: Array[Dictionary] = []
 var lobby_members_max: int = 4
-
+var _pending_lobby_name: String = ""
 # ─── Сигналы для UI ───────────────────────────────────────────────────────────
 signal lobby_created_ok(lobby_id: int)
 signal lobby_joined_ok(lobby_id: int)
@@ -87,7 +87,7 @@ func create_lobby(
 	_pending_lobby_name = lobby_name
 
 
-var _pending_lobby_name: String = ""
+
 
 func _on_lobby_created(result: int, new_lobby_id: int) -> void:
 	if result != 1:

@@ -26,11 +26,10 @@ func _ready() -> void:
 	_refresh_player_list()
 
 
+
 func _refresh_player_list() -> void:
-	# Очищаем список и перестраиваем
 	for child in player_list.get_children():
 		child.queue_free()
-
 	for member: Dictionary in SteamManager.lobby_members:
 		var label := Label.new()
 		var ready_tag: String = " ✓" if member["is_ready"] else " ○"
@@ -38,7 +37,8 @@ func _refresh_player_list() -> void:
 		label.text = "%s%s%s" % [member["steam_name"], owner_tag, ready_tag]
 		player_list.add_child(label)
 
-	# Разблокируем "Старт" когда все готовы
+	# ✅ Обновляем видимость кнопки при каждом обновлении списка
+	btn_start.visible = (SteamManager.steam_id == Steam.getLobbyOwner(SteamManager.lobby_id))
 	btn_start.disabled = not SteamManager.all_players_ready()
 
 
