@@ -76,3 +76,8 @@ func _on_btn_leave_pressed() -> void:
 func _on_lobby_left() -> void:
 	#"res://scenes/main_menu/main_menu.tscn"
 	get_tree().change_scene_to_file("uid://c6t7qd42fgtdw")
+
+
+func _on_chat_input_text_submitted(new_text: String) -> void:
+	SteamManager.send_chat_message(chat_input.text)
+	chat_input.clear()

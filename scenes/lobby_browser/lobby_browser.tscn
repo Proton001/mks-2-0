@@ -8,39 +8,46 @@ anchors_preset = 0
 size_flags_vertical = 3
 script = ExtResource("1_rm7lg")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=606265610]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1428980489]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="FilterBar" type="HBoxContainer" parent="VBoxContainer" unique_id=1874002354]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=606265610]
 layout_mode = 2
 
-[node name="FilterNameEdit" type="LineEdit" parent="VBoxContainer/FilterBar" unique_id=926434133]
+[node name="FilterBar" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1874002354]
+layout_mode = 2
+
+[node name="FilterNameEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/FilterBar" unique_id=926434133]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="FilterMaxPlayers" type="SpinBox" parent="VBoxContainer/FilterBar" unique_id=483710229]
+[node name="FilterMaxPlayers" type="SpinBox" parent="MarginContainer/VBoxContainer/FilterBar" unique_id=483710229]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="BtnRefresh" type="Button" parent="VBoxContainer" unique_id=774131328]
+[node name="BtnRefresh" type="Button" parent="MarginContainer/VBoxContainer" unique_id=774131328]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Рефреш"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer" unique_id=675593857]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer" unique_id=675593857]
 layout_mode = 2
 
-[node name="LobbyList" type="VBoxContainer" parent="VBoxContainer/ScrollContainer" unique_id=538840329]
+[node name="LobbyList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer" unique_id=538840329]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="LabelStatus" type="Label" parent="VBoxContainer" unique_id=103402570]
+[node name="LabelStatus" type="Label" parent="MarginContainer/VBoxContainer" unique_id=103402570]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="BtnBack" type="Button" parent="VBoxContainer" unique_id=1877005397]
+[node name="BtnBack" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1877005397]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Назад"
