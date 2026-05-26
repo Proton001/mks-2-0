@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dx1hlvfd60um1"]
+
+[ext_resource type="Script" uid="uid://b582a05oilxyk" path="res://scenes/game/game.gd" id="1_sul5r"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_sul5r"]
+
+[node name="Node2D" type="Node2D" unique_id=1750798745]
+script = ExtResource("1_sul5r")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1164717511]
+_spawnable_scenes = PackedStringArray("uid://ce3utqck1v6we")
+spawn_path = NodePath("../World")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=855706696]
+replication_config = SubResource("SceneReplicationConfig_sul5r")
+
+[node name="World" type="Node2D" parent="." unique_id=1244250069]

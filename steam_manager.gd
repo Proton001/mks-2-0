@@ -23,7 +23,7 @@ signal chat_message_received(sender_name: String, message: String)
 signal player_ready_changed(steam_id: int, is_ready: bool)
 signal lobby_left()
 signal game_started()# Сигнал к началу игры
-
+signal multiplayer_ready()
 
 func _init() -> void:
 	OS.set_environment("SteamAppId", str(APP_ID))
@@ -286,3 +286,57 @@ func leave_lobby() -> void:
 	lobby_id = 0
 	lobby_members.clear()
 	emit_signal("lobby_left")
+
+
+
+
+
+
+# ─── Мультиплеер ──────────────────────────────────────────────────────────────
+
+func setup_multiplayer() -> void:
+	var peer := SteamMultiplayerPeer.new()
+
+	# Хост создаёт сервер, клиенты подключаются к хосту
+	if steam_id == Steam.getLobbyOwner(lobby_id):
+		var err: Error = peer.create_host(0)  # 0 = виртуальный порт
+		if err != OK:
+			push_error("Ошибка создания хоста: %s" % error_string(err))
+			return
+		print("Multiplayer: я хост")
+	else:
+		var host_id: int = Steam.getLobbyOwner(lobby_id)
+		var err: Error = peer.create_client(host_id, 0)
+		if err != OK:
+			push_error("Ошибка подключения к хосту: %s" % error_string(err))
+			return
+		print("Multiplayer: я клиент, хост = %d" % host_id)
+
+	multiplayer.multiplayer_peer = peer
+
+	# Ждём подключения всех игроков
+	multiplayer.peer_connected.connect(_on_peer_connected)
+	multiplayer.peer_disconnected.connect(_on_peer_disconnected)
+	multiplayer.connected_to_server.connect(_on_connected_to_server)
+	multiplayer.connection_failed.connect(_on_connection_failed)
+
+	emit_signal("multiplayer_ready")
+	
+	
+	
+	
+func _on_peer_connected(peer_id: int) -> void:
+	print("Peer подключился: %d" % peer_id)
+
+
+func _on_peer_disconnected(peer_id: int) -> void:
+	print("Peer отключился: %d" % peer_id)
+	# TODO: обработка дисконнекта во время игры
+
+
+func _on_connected_to_server() -> void:
+	print("Успешно подключился к хосту")
+
+
+func _on_connection_failed() -> void:
+	push_error("Не удалось подключиться к хосту")

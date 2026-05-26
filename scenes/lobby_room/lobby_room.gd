@@ -68,7 +68,9 @@ func _on_btn_start_pressed() -> void:
 	print("=== setLobbyData результат: ", ok)  # должно быть true
 
 func _on_game_started() -> void:
-	print("Запуск игровой  сцены")
+	print("Запуск игровой сцены")
+	# Сначала поднимаем P2P-соединение, потом меняем сцену
+	SteamManager.setup_multiplayer()
 	get_tree().change_scene_to_file("uid://dx1hlvfd60um1")  # game.tscn
 
 func _on_btn_leave_pressed() -> void:

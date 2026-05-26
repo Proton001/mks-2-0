@@ -24,7 +24,6 @@ SteamManager="*uid://c4o5stnalo1sg"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=1
-window/size/borderless=true
 window/stretch/mode="viewport"
 
 [editor_plugins]
