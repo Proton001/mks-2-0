@@ -1,0 +1,183 @@
+[gd_scene format=3 uid="uid://c05y4n60vf0v2"]
+
+[ext_resource type="Script" uid="uid://dykxb87ro8rhh" path="res://main_menu.gd" id="1_tjped"]
+[ext_resource type="Script" uid="uid://b2f4ipo7pl4b3" path="res://lobby_room.gd" id="2_tjped"]
+
+[node name="LobbyScene" type="Node" unique_id=2025422644]
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=542296361]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI" unique_id=415876021]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenu" type="Control" parent="UI/VBoxContainer" unique_id=1221071590]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("1_tjped")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/VBoxContainer/MainMenu" unique_id=1199580401]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/VBoxContainer/MainMenu/MarginContainer" unique_id=701482060]
+layout_mode = 2
+
+[node name="BtnCreateLobby" type="Button" parent="UI/VBoxContainer/MainMenu/MarginContainer/VBoxContainer" unique_id=1125147447]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Создать лобби"
+
+[node name="BtnBrowseLobbies" type="Button" parent="UI/VBoxContainer/MainMenu/MarginContainer/VBoxContainer" unique_id=1556500915]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Присоеденится к лобби"
+
+[node name="CreateLobbyPanel" type="Panel" parent="UI/VBoxContainer/MainMenu/MarginContainer/VBoxContainer" unique_id=1545180201]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/VBoxContainer/MainMenu/MarginContainer/VBoxContainer/CreateLobbyPanel" unique_id=783440336]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LobbyNameEdit" type="LineEdit" parent="UI/VBoxContainer/MainMenu/MarginContainer/VBoxContainer/CreateLobbyPanel/VBoxContainer" unique_id=614361217]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Имя лобби"
+
+[node name="MaxPlayersSlider" type="HSlider" parent="UI/VBoxContainer/MainMenu/MarginContainer/VBoxContainer/CreateLobbyPanel/VBoxContainer" unique_id=462080103]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 2.0
+max_value = 6.0
+value = 2.0
+rounded = true
+tick_count = 5
+ticks_on_borders = true
+ticks_position = 3
+
+[node name="LabelMaxPlayers" type="Label" parent="UI/VBoxContainer/MainMenu/MarginContainer/VBoxContainer/CreateLobbyPanel/VBoxContainer" unique_id=1755774708]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PrivacyOption" type="OptionButton" parent="UI/VBoxContainer/MainMenu/MarginContainer/VBoxContainer/CreateLobbyPanel/VBoxContainer" unique_id=1947887003]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "Public"
+popup/item_0/id = 0
+popup/item_1/text = "Friends Only"
+popup/item_1/id = 1
+
+[node name="BtnConfirmCreate" type="Button" parent="UI/VBoxContainer/MainMenu/MarginContainer/VBoxContainer/CreateLobbyPanel/VBoxContainer" unique_id=737811775]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Save create options"
+
+[node name="LobbyBrowser" type="Control" parent="UI/VBoxContainer" unique_id=1336972991]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/VBoxContainer/LobbyBrowser" unique_id=214692318]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="FilterBar" type="HBoxContainer" parent="UI/VBoxContainer/LobbyBrowser/VBoxContainer" unique_id=1495943116]
+layout_mode = 2
+
+[node name="FilterNameEdit" type="LineEdit" parent="UI/VBoxContainer/LobbyBrowser/VBoxContainer/FilterBar" unique_id=314333119]
+layout_mode = 2
+
+[node name="FilterMaxPlayers" type="SpinBox" parent="UI/VBoxContainer/LobbyBrowser/VBoxContainer/FilterBar" unique_id=1493299727]
+layout_mode = 2
+
+[node name="BtnRefresh" type="Button" parent="UI/VBoxContainer/LobbyBrowser/VBoxContainer" unique_id=339535171]
+layout_mode = 2
+text = "Рефреш"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/VBoxContainer/LobbyBrowser/VBoxContainer" unique_id=1698506817]
+layout_mode = 2
+
+[node name="LobbyList" type="VBoxContainer" parent="UI/VBoxContainer/LobbyBrowser/VBoxContainer/ScrollContainer" unique_id=3082155]
+layout_mode = 2
+
+[node name="LobbyRoom" type="Control" parent="UI/VBoxContainer" unique_id=1400127415]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("2_tjped")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/VBoxContainer/LobbyRoom" unique_id=1777633391]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/VBoxContainer/LobbyRoom/VBoxContainer" unique_id=1096983091]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayerList" type="VBoxContainer" parent="UI/VBoxContainer/LobbyRoom/VBoxContainer/HBoxContainer" unique_id=642403159]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/VBoxContainer/LobbyRoom/VBoxContainer/HBoxContainer/PlayerList" unique_id=1651037517]
+layout_mode = 2
+text = "Список игроков:"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/VBoxContainer/LobbyRoom/VBoxContainer/HBoxContainer" unique_id=1996295197]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ChatLog" type="RichTextLabel" parent="UI/VBoxContainer/LobbyRoom/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=622558935]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "Чат:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/VBoxContainer/LobbyRoom/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=765613508]
+layout_mode = 2
+
+[node name="ChatInput" type="LineEdit" parent="UI/VBoxContainer/LobbyRoom/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1707185997]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Введите текст"
+
+[node name="BtnSendChat" type="Button" parent="UI/VBoxContainer/LobbyRoom/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1359442200]
+layout_mode = 2
+text = "Отправить сообщение"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/VBoxContainer/LobbyRoom/VBoxContainer" unique_id=162746064]
+layout_mode = 2
+
+[node name="BtnReady" type="Button" parent="UI/VBoxContainer/LobbyRoom/VBoxContainer/HBoxContainer2" unique_id=1341262060]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Готов"
+
+[node name="BtnStart" type="Button" parent="UI/VBoxContainer/LobbyRoom/VBoxContainer/HBoxContainer2" unique_id=1988955928]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Старт"
+
+[node name="BtnLeave" type="Button" parent="UI/VBoxContainer/LobbyRoom/VBoxContainer/HBoxContainer2" unique_id=464617077]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Покинуть лобби"
+
+[connection signal="pressed" from="UI/VBoxContainer/LobbyRoom/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/BtnSendChat" to="UI/VBoxContainer/LobbyRoom" method="_on_btn_send_chat_pressed"]
+[connection signal="pressed" from="UI/VBoxContainer/LobbyRoom/VBoxContainer/HBoxContainer2/BtnReady" to="UI/VBoxContainer/LobbyRoom" method="_on_btn_ready_pressed"]
