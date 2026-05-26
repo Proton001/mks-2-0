@@ -1,3 +1,15 @@
-# Godot 4+ specific ignores
+# Godot
 .godot/
-/android/
+*.import
+export_presets.cfg
+
+# Steam (никогда не коммить!)
+steam_appid.txt
+steam_api64.dll
+addons/godotsteam/win64/
+addons/godotsteam/linux64/
+addons/godotsteam/macos/
+
+# OS
+.DS_Store
+Thumbs.db
