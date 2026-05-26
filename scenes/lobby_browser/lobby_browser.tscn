@@ -4,14 +4,21 @@
 
 [node name="LobbyBrowser" type="Control" unique_id=2125015349]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 3
 script = ExtResource("1_rm7lg")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1428980489]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
@@ -31,23 +38,30 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="BtnRefresh" type="Button" parent="MarginContainer/VBoxContainer" unique_id=774131328]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=372623326]
+layout_mode = 2
+
+[node name="LabelStatus" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=103402570]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="BtnRefresh" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=774131328]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Рефреш"
 
+[node name="BtnBack" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1877005397]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Назад"
+
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer" unique_id=675593857]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="LobbyList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer" unique_id=538840329]
 unique_name_in_owner = true
 layout_mode = 2
-
-[node name="LabelStatus" type="Label" parent="MarginContainer/VBoxContainer" unique_id=103402570]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="BtnBack" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1877005397]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Назад"
+size_flags_horizontal = 3
+size_flags_vertical = 3

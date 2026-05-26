@@ -24,7 +24,7 @@ func _ready() -> void:
 	btn_start.disabled = true
 
 	_refresh_player_list()
-
+	SteamManager.game_started.connect(_on_game_started) # подключеаем сигнал к началу игры
 
 
 func _refresh_player_list() -> void:
@@ -62,12 +62,14 @@ func _on_btn_send_chat_pressed() -> void:
 
 
 func _on_btn_start_pressed() -> void:
-	if SteamManager.all_players_ready():
-		# Меняем сцену на игровую
-		#"res://scenes/game.tscn"
-		get_tree().change_scene_to_file("uid://dx1hlvfd60um1")
+	if not SteamManager.all_players_ready():
+		return
+	var ok: bool = Steam.setLobbyData(SteamManager.lobby_id, "state", "started")
+	print("=== setLobbyData результат: ", ok)  # должно быть true
 
-
+func _on_game_started() -> void:
+	print("Запуск игровой  сцены")
+	get_tree().change_scene_to_file("uid://dx1hlvfd60um1")  # game.tscn
 
 func _on_btn_leave_pressed() -> void:
 	SteamManager.leave_lobby()

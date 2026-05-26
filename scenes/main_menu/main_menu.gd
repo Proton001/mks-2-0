@@ -18,11 +18,11 @@ const PRIVACY_TYPES: Array[int] = [
 
 func _ready() -> void:
 	# Настройка слайдера
-	max_slider.min_value = 2
+	max_slider.min_value = 1
 	max_slider.max_value = 6
 	max_slider.step      = 1
-	max_slider.value     = 4
-	label_max.text       = "Игроков: 4"
+	max_slider.value     = 2
+	label_max.text       = "Игроков: 2"
 
 	# Настройка выпадающего списка приватности
 	privacy_option.clear()

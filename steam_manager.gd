@@ -22,6 +22,7 @@ signal lobby_members_updated()
 signal chat_message_received(sender_name: String, message: String)
 signal player_ready_changed(steam_id: int, is_ready: bool)
 signal lobby_left()
+signal game_started()# Сигнал к началу игры
 
 
 func _init() -> void:
@@ -80,7 +81,7 @@ func create_lobby(
 		return
 
 	# Ограничиваем от 2 до 6 участников
-	lobby_members_max = clamp(max_players, 2, 6)
+	lobby_members_max = clamp(max_players, 1, 6)
 	Steam.createLobby(privacy, lobby_members_max)
 
 	# Временно сохраняем название, чтобы установить его в колбэке
@@ -136,6 +137,7 @@ func request_lobby_list(filter_name: String = "", filter_max_players: int = 0) -
 
 
 func _on_lobby_match_list(lobbies: Array) -> void:
+	print("=== Найдено лобби: ", lobbies.size(), " → ", lobbies)
 	emit_signal("lobby_list_received", lobbies)
 	
 # ─── Присоединение к лобби ────────────────────────────────────────────────────
@@ -219,8 +221,20 @@ func _on_persona_change(changed_id: int, _flag: int) -> void:
 
 
 # Изменение данных лобби (например, хост поменял настройки)
-func _on_lobby_data_update(_lid: int, _member_id: int, _key_changed: int) -> void:
+func _on_lobby_data_update(success: bool, updated_lobby_id: int, member_id: int) -> void:
+	if not success:
+		return
+
+	# Если member_id == lobby_id — изменились данные лобби (не участника)
+	if member_id == updated_lobby_id:
+		var state: String = Steam.getLobbyData(updated_lobby_id, "state")
+		print("=== lobby_data_update state: '%s'" % state)
+		if state == "started":
+			emit_signal("game_started")
+			return
+
 	get_lobby_members()
+
 
 
 # ─── Чат лобби ────────────────────────────────────────────────────────────────
@@ -253,7 +267,7 @@ func set_player_ready(is_ready: bool) -> void:
 
 
 func all_players_ready() -> bool:
-	if lobby_members.size() < 2:
+	if lobby_members.size() < 1:
 		return false
 	for member in lobby_members:
 		if not member["is_ready"]:
