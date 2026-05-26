@@ -64,7 +64,9 @@ func _on_btn_send_chat_pressed() -> void:
 func _on_btn_start_pressed() -> void:
 	if SteamManager.all_players_ready():
 		# Меняем сцену на игровую
-		get_tree().change_scene_to_file("res://game.tscn")
+		#"res://scenes/game.tscn"
+		get_tree().change_scene_to_file("uid://dx1hlvfd60um1")
+
 
 
 func _on_btn_leave_pressed() -> void:
@@ -72,4 +74,5 @@ func _on_btn_leave_pressed() -> void:
 
 
 func _on_lobby_left() -> void:
-	get_tree().change_scene_to_file("res://main_menu.tscn")
+	#"res://scenes/main_menu/main_menu.tscn"
+	get_tree().change_scene_to_file("uid://c6t7qd42fgtdw")

@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://ii5saug6ok5e"]
+
+[ext_resource type="Script" uid="uid://b2f4ipo7pl4b3" path="res://scenes/lobby_room/lobby_room.gd" id="1_wjbq6"]
+
+[node name="LobbyRoom" type="Control" unique_id=1749797230]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+script = ExtResource("1_wjbq6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=521982587]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1513018704]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayerList" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=1940835992]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/PlayerList" unique_id=945154178]
+layout_mode = 2
+text = "Список игроков:"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=1223645626]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ChatLog" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=390072711]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "Чат:
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=624841836]
+layout_mode = 2
+
+[node name="ChatInput" type="LineEdit" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1549495286]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Введите текст"
+
+[node name="BtnSendChat" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=2060077285]
+layout_mode = 2
+text = "Отправить сообщение"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=437868124]
+layout_mode = 2
+
+[node name="BtnReady" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=1595197080]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Готов"
+
+[node name="BtnStart" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=600722325]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Старт"
+
+[node name="BtnLeave" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=506253904]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Покинуть лобби"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/BtnSendChat" to="." method="_on_btn_send_chat_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/BtnReady" to="." method="_on_btn_ready_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/BtnStart" to="." method="_on_btn_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/BtnLeave" to="." method="_on_btn_leave_pressed"]

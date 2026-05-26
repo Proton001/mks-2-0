@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://c6t7qd42fgtdw"]
+
+[ext_resource type="Script" uid="uid://dykxb87ro8rhh" path="res://scenes/main_menu/main_menu.gd" id="1_l6cm7"]
+
+[node name="MainMenu" type="Control" unique_id=853929666]
+layout_mode = 3
+anchors_preset = 0
+size_flags_vertical = 3
+script = ExtResource("1_l6cm7")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1523697561]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=853846525]
+layout_mode = 2
+
+[node name="BtnCreateLobby" type="Button" parent="MarginContainer/VBoxContainer" unique_id=385426990]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Панель создания лобби"
+
+[node name="BtnBrowseLobbies" type="Button" parent="MarginContainer/VBoxContainer" unique_id=631941183]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Показать список лобби"
+
+[node name="CreateLobbyPanel" type="Panel" parent="MarginContainer/VBoxContainer" unique_id=1719435669]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/CreateLobbyPanel" unique_id=2046633431]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LobbyNameEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/CreateLobbyPanel/VBoxContainer" unique_id=441422548]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Имя лобби"
+
+[node name="MaxPlayersSlider" type="HSlider" parent="MarginContainer/VBoxContainer/CreateLobbyPanel/VBoxContainer" unique_id=850207021]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 2.0
+max_value = 6.0
+value = 2.0
+rounded = true
+tick_count = 5
+ticks_on_borders = true
+ticks_position = 3
+
+[node name="LabelMaxPlayers" type="Label" parent="MarginContainer/VBoxContainer/CreateLobbyPanel/VBoxContainer" unique_id=1831961792]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PrivacyOption" type="OptionButton" parent="MarginContainer/VBoxContainer/CreateLobbyPanel/VBoxContainer" unique_id=653494872]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "Public"
+popup/item_0/id = 0
+popup/item_1/text = "Friends Only"
+popup/item_1/id = 1
+
+[node name="BtnConfirmCreate" type="Button" parent="MarginContainer/VBoxContainer/CreateLobbyPanel/VBoxContainer" unique_id=1486061533]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Создать лобби"

@@ -56,8 +56,8 @@ func _on_btn_create_pressed() -> void:
 # ─── Переход к списку лобби ──────────────────────────────────────────────────
 func _on_btn_browse_pressed() -> void:
 	# Меняем сцену на браузер лобби
-	get_tree().change_scene_to_file("res://scenes/lobby_browser.tscn")
-
+	#"res://scenes/lobby_browser/lobby_browser.tscn"
+	get_tree().change_scene_to_file("uid://xxpaqo0m3mw2")
 
 # ─── Обновление подписи слайдера ─────────────────────────────────────────────
 func _on_slider_changed(value: float) -> void:
@@ -91,8 +91,8 @@ func _on_btn_confirm_pressed() -> void:
 func _on_lobby_created_ok(lobby_id: int) -> void:
 	print("Лобби создано: %d" % lobby_id)
 	panel.hide()
-	get_tree().change_scene_to_file("res://scenes/lobby_room.tscn")
-
+	#"res://scenes/lobby_room/lobby_room.tscn"
+	get_tree().change_scene_to_file("uid://ii5saug6ok5e")
 
 func _on_lobby_failed(reason: String) -> void:
 	btn_confirm.disabled = false
